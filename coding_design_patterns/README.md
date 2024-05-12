@@ -50,25 +50,31 @@ and maintainable.
 ## When to Choose Which Pattern
 The best design pattern depends on your pipeline's specific needs:
 
-- **Complexity**: For complex pipelines, *[Facade](core_structural_patterns/facade.py)* helps simplify interactions. 
-*[Iterators](pipeline_specific_patterns/iterator.py)* or *[Chain of Responsability](pipeline_specific_patterns/chain_of_responsability.py)* increase modularity.
-- **Flexibility**: *[Adapters](core_structural_patterns/adapter.py)* make your pipeline work with varied data sources. 
-*[Strategies](pipeline_specific_patterns/strategy.py)* and the *[Factory](pipeline_specific_patterns/factory.py)* pattern support choosing algorithms or 
-creating components dynamically.
-- **Extensibility**: *[Decorators](core_structural_patterns/adapter.py)* enhance steps without major code changes. 
-The *[Observer](behavioral_patterns/observer.py)* pattern syncs up dependent pipeline components.
-- **Maintainability**: The *[Template Method](behavioral_patterns/template_method.py)* provides well-structured pipelines, 
-and *[Command](behavioral_patterns/command.py)* helps isolate pipeline actions.
+- **Complexity**: For complex pipelines, *[Facade](core_structural_patterns/facade.py)* 
+  helps simplify interactions. *[Iterators](pipeline_specific_patterns/iterator.py)* or 
+  *[Chain of Responsability](pipeline_specific_patterns/chain_of_responsability.py)* 
+  increase modularity.
+- **Flexibility**: *[Adapters](core_structural_patterns/adapter.py)* make your pipeline 
+  work with varied data sources. *[Strategies](pipeline_specific_patterns/strategy.py)* 
+  and the *[Factory](pipeline_specific_patterns/factory.py)* pattern support choosing 
+  algorithms or creating components dynamically.
+- **Extensibility**: *[Decorators](core_structural_patterns/adapter.py)* enhance steps 
+  without major code changes. The *[Observer](behavioral_patterns/observer.py)* pattern 
+  syncs up dependent pipeline components.
+- **Maintainability**: The *[Template Method](behavioral_patterns/template_method.py)* 
+  provides well-structured pipelines, and *[Command](behavioral_patterns/command.py)* 
+  helps isolate pipeline actions.
 
 ### Important Cosiderations
 
 - **Don't Over-Engineer**: Simple pipelines rarely need many patterns. Start simple and 
-refactor as complexity grows.
-- **Combine Patterns**: Several of these patterns work well together within a pipeline design.
+  refactor as complexity grows.
+- **Combine Patterns**: Several of these patterns work well together within a pipeline 
+  design.
 
 It's common for a complex data pipeline to incorporate multiple design patterns working 
-together to address different aspects of its structure and behavior. Let's imagine a typical 
-scenario to see how this might work:
+together to address different aspects of its structure and behavior. Let's imagine a 
+typical scenario to see how this might work:
 
 ### Scenario:
 A data pipeline that needs to:
@@ -81,18 +87,26 @@ A data pipeline that needs to:
 
 ## Possible Design Pattern Combination:
 
-1. **[Facade](core_structural_patterns/facade.py)**: Interface simplifying the interaction with various data sources.
-2. **[Adapters](core_structural_patterns/adapter.py)**: Handle the differing interfaces of sources as needed.
-3. **[Strategy](pipeline_specific_patterns/strategy.py)**: Encapsulates different cleaning/transformation strategies, selectable at runtime.
-4. **[Decorator](core_structural_patterns/adapter.py)**: Dynamiccalyy adds logging to processing steps.
-5. **[Observer](behavioral_patterns/observer.py)**: Components notify a central error handler.
-6. **[Command](behavioral_patterns/command.py)**: Load steps are encapsulated as commands, enabling retries and logging.
+1. **[Facade](core_structural_patterns/facade.py)**: Interface simplifying the 
+   interaction with various data sources.
+2. **[Adapters](core_structural_patterns/adapter.py)**: Handle the differing interfaces 
+   of sources as needed.
+3. **[Strategy](pipeline_specific_patterns/strategy.py)**: Encapsulates different 
+   cleaning/transformation strategies, selectable at runtime.
+4. **[Decorator](core_structural_patterns/adapter.py)**: Dynamiccalyy adds logging to 
+   processing steps.
+5. **[Observer](behavioral_patterns/observer.py)**: Components notify a central error 
+   handler.
+6. **[Command](behavioral_patterns/command.py)**: Load steps are encapsulated as 
+   commands, enabling retries and logging.
 
 ### How It Fits Together
 
-- The Facade presents a unified way to extract data, hiding the complexity of diverse sources.
+- The Facade presents a unified way to extract data, hiding the complexity of diverse 
+  sources.
 - Adapters allow integration of sources with incompatible interfaces.
-- The Strategy pattern chooses the right cleaning/transformation approach based on source characteristics.
+- The Strategy pattern chooses the right cleaning/transformation approach based on 
+  source characteristics.
 - Decorators inject logging without modifying the core processing logic.
 - Observers coodinate error handling.
 - Commands ensure load operations are trackable and repeatable.
